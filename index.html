@@ -36,7 +36,6 @@
       opacity:.7;
       animation:float 8s linear infinite;
       z-index:0;
-      pointer-events:none;
     }
 
     @keyframes float{
@@ -252,7 +251,7 @@
       box-shadow:0 0 10px white;
     }
 
-    /* CONTROLS */
+    /* CONTROLS BELOW PICTURE */
 
     .controls{
       display:flex;
@@ -305,92 +304,15 @@
       transform:translateY(0);
     }
 
-    /* ENVELOPE */
-
-    .envelope-container{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      margin-top:10px;
-    }
-
-    .envelope{
-      width:110px;
-      height:110px;
-      background:white;
-      border-radius:25px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:55px;
-      cursor:pointer;
-      box-shadow:
-      0 0 20px rgba(255,255,255,.8),
-      0 0 35px rgba(255,105,180,.6);
-      transition:.3s;
-      animation:floatEnvelope 2s ease-in-out infinite;
-    }
-
-    .envelope:hover{
-      transform:scale(1.08);
-    }
-
-    @keyframes floatEnvelope{
-      0%,100%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-8px);
-      }
-    }
-
-    /* VOICE CARD */
-
-    .voice-card{
-      margin-top:20px;
-      background:rgba(255,255,255,.25);
-      backdrop-filter:blur(10px);
-      padding:20px;
-      border-radius:25px;
-      display:none;
-      flex-direction:column;
-      align-items:center;
-      gap:15px;
-      box-shadow:
-      0 0 25px rgba(255,255,255,.4);
-      animation:fadeIn .5s ease;
-    }
-
-    .voice-card h3{
-      color:white;
-      text-shadow:0 0 10px #ff4fa3;
-      font-size:24px;
-    }
-
-    .voice-card audio{
-      width:260px;
-    }
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(15px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
   </style>
 </head>
 
 <body>
 
-  <!-- BACKGROUND MUSIC -->
+  <!-- MUSIC -->
 
   <audio id="bgMusic" loop>
-    <source src="birthday.mp3" type="audio/mp3">
+    <source src="image/Dannie.jpg" type="audio/mp3">
   </audio>
 
   <!-- FLOATING HEARTS -->
@@ -427,7 +349,7 @@
 
       <img src="image/Dannie.jpg" class="birthday-image">
 
-      <!-- CONTROLS -->
+      <!-- CONTROLS BELOW PICTURE -->
 
       <div class="controls">
 
@@ -438,26 +360,6 @@
         <button id="startBtn">
           Enable Microphone 🎤
         </button>
-
-      </div>
-
-      <!-- ENVELOPE -->
-
-      <div class="envelope-container">
-
-        <div class="envelope" id="envelope">
-          💌
-        </div>
-
-        <div class="voice-card" id="voiceCard">
-
-          <h3>Birthday Greeting 🎙️</h3>
-
-          <audio controls>
-            <source src="greeting.mp3" type="audio/mp3">
-          </audio>
-
-        </div>
 
       </div>
 
@@ -488,18 +390,24 @@
           <div class="layer top"></div>
           <div class="icing icing3"></div>
 
-          <!-- DECORATIONS -->
+          <!-- DECOR -->
 
           <div class="decor" style="bottom:25px; left:40px;"></div>
+
           <div class="decor" style="bottom:25px; right:40px;"></div>
+
           <div class="decor" style="bottom:110px; left:60px;"></div>
+
           <div class="decor" style="bottom:110px; right:60px;"></div>
+
           <div class="decor" style="bottom:185px; left:110px;"></div>
 
           <!-- CANDLE -->
 
           <div class="candle">
+
             <div class="flame" id="flame"></div>
+
           </div>
 
         </div>
@@ -520,47 +428,17 @@
 
   <script>
 
-    const startBtn =
-    document.getElementById("startBtn");
+    const startBtn = document.getElementById("startBtn");
 
-    const flame =
-    document.getElementById("flame");
+    const flame = document.getElementById("flame");
 
-    const message =
-    document.getElementById("message");
+    const message = document.getElementById("message");
 
-    const music =
-    document.getElementById("bgMusic");
-
-    const envelope =
-    document.getElementById("envelope");
-
-    const voiceCard =
-    document.getElementById("voiceCard");
+    const music = document.getElementById("bgMusic");
 
     let analyser;
 
     let dataArray;
-
-    /* ENVELOPE CLICK */
-
-    envelope.addEventListener("click", ()=>{
-
-      if(
-        voiceCard.style.display === "flex"
-      ){
-
-        voiceCard.style.display = "none";
-
-      }else{
-
-        voiceCard.style.display = "flex";
-
-      }
-
-    });
-
-    /* MICROPHONE */
 
     startBtn.addEventListener("click", async()=>{
 
@@ -609,8 +487,6 @@
 
     });
 
-    /* DETECT BLOW */
-
     function detectBlow(){
 
       requestAnimationFrame(detectBlow);
@@ -620,6 +496,8 @@
       let volume =
       dataArray.reduce((a,b)=>a+b)
       / dataArray.length;
+
+      /* BLOW SENSITIVITY */
 
       if(volume > 45){
 
