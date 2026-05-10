@@ -304,6 +304,154 @@
       transform:translateY(0);
     }
 
+    /* ========================================= */
+/* RESPONSIVE DESIGN */
+/* ========================================= */
+
+@media (max-width: 1200px){
+
+  .container{
+    padding:30px;
+    gap:30px;
+  }
+
+  .birthday-image{
+    width:350px;
+    height:350px;
+  }
+
+  h1{
+    font-size:45px;
+  }
+
+  .cake-container{
+    transform:scale(1);
+  }
+
+}
+
+@media (max-width: 900px){
+
+  body{
+    overflow-y:auto;
+    height:auto;
+    min-height:100vh;
+    padding:30px 0;
+  }
+
+  .container{
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    padding:20px;
+  }
+
+  .left-side,
+  .right-side{
+    width:100%;
+  }
+
+  .birthday-image{
+    width:320px;
+    height:320px;
+    max-width:90%;
+  }
+
+  h1{
+    font-size:38px;
+    margin-bottom:20px;
+  }
+
+  .cake-container{
+    transform:scale(.9);
+  }
+
+  .message{
+    font-size:30px;
+    text-align:center;
+    padding:0 20px;
+  }
+
+  .instruction{
+    font-size:16px;
+    max-width:280px;
+  }
+
+  button{
+    font-size:16px;
+    padding:14px 24px;
+  }
+
+}
+
+@media (max-width: 600px){
+
+  .container{
+    gap:30px;
+  }
+
+  .birthday-image{
+    width:250px;
+    height:250px;
+    border-width:7px;
+  }
+
+  h1{
+    font-size:28px;
+    line-height:1.3;
+    padding:0 10px;
+  }
+
+  .cake-container{
+    transform:scale(.72);
+    margin-top:-20px;
+  }
+
+  .message{
+    font-size:24px;
+    margin-top:10px;
+  }
+
+  .instruction{
+    font-size:14px;
+    max-width:230px;
+  }
+
+  button{
+    width:220px;
+    font-size:15px;
+    padding:13px 20px;
+  }
+
+  .controls{
+    gap:12px;
+  }
+
+}
+
+@media (max-width: 400px){
+
+  .birthday-image{
+    width:210px;
+    height:210px;
+  }
+
+  h1{
+    font-size:22px;
+  }
+
+  .cake-container{
+    transform:scale(.58);
+    margin-top:-45px;
+  }
+
+  .message{
+    font-size:20px;
+  }
+
+}
+
   </style>
 </head>
 
