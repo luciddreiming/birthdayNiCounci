@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Dannie</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      overflow:hidden;
+      height:100vh;
+      background:
+      radial-gradient(circle at top,
+      #ffd6eb 0%,
+      #ffb8dc 40%,
+      #ff82be 100%);
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* FLOATING HEARTS */
+
+    .heart{
+      position:absolute;
+      color:white;
+      opacity:.7;
+      animation:float 8s linear infinite;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(100vh) rotate(0deg);
+      }
+      to{
+        transform:translateY(-120vh) rotate(360deg);
+      }
+    }
+
+    /* MAIN CONTAINER */
+
+    .container{
+      width:100%;
+      height:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:40px 60px;
+      z-index:2;
+    }
+
+    /* LEFT SIDE */
+
+    .left-side{
+      width:40%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:25px;
+    }
+
+    .birthday-image{
+      width:430px;
+      height:430px;
+      object-fit:cover;
+      border-radius:30px;
+      border:10px solid white;
+      box-shadow:
+      0 0 25px rgba(255,255,255,.8),
+      0 0 50px rgba(255,105,180,.7);
+      animation:floatPic 3s ease-in-out infinite;
+    }
+
+    @keyframes floatPic{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    /* RIGHT SIDE */
+
+    .right-side{
+      width:60%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+
+    h1{
+      font-size:58px;
+      color:white;
+      text-align:center;
+      margin-bottom:30px;
+      text-shadow:
+      0 0 10px #ff4fa3,
+      0 0 20px #ff4fa3,
+      0 0 40px #ff4fa3;
+      z-index:10;
+    }
+
+    /* CAKE */
+
+    .cake-container{
+      transform:scale(1.15);
+      position:relative;
+      margin-top:20px;
+    }
+
+    .cake{
+      position:relative;
+      width:320px;
+      height:300px;
+    }
+
+    .plate{
+      position:absolute;
+      width:370px;
+      height:28px;
+      background:#f2f2f2;
+      border-radius:50%;
+      bottom:-10px;
+      left:-25px;
+      box-shadow:0 5px 15px rgba(0,0,0,.2);
+    }
+
+    .layer{
+      position:absolute;
+      border-radius:20px;
+      left:50%;
+      transform:translateX(-50%);
+      box-shadow:
+      inset 0 -12px rgba(0,0,0,.08),
+      0 8px 18px rgba(0,0,0,.15);
+    }
+
+    .bottom{
+      width:320px;
+      height:100px;
+      background:#ff69b4;
+      bottom:0;
+    }
+
+    .middle{
+      width:250px;
+      height:80px;
+      background:#ff8fcf;
+      bottom:90px;
+    }
+
+    .top{
+      width:180px;
+      height:65px;
+      background:#ffc1e3;
+      bottom:160px;
+    }
+
+    .icing{
+      position:absolute;
+      background:white;
+      border-radius:20px;
+      height:18px;
+    }
+
+    .icing1{
+      width:320px;
+      bottom:90px;
+    }
+
+    .icing2{
+      width:250px;
+      bottom:160px;
+      left:35px;
+    }
+
+    .icing3{
+      width:180px;
+      bottom:220px;
+      left:70px;
+    }
+
+    /* CANDLE */
+
+    .candle{
+      position:absolute;
+      width:16px;
+      height:55px;
+      background:
+      repeating-linear-gradient(
+      45deg,
+      white,
+      white 8px,
+      hotpink 8px,
+      hotpink 16px
+      );
+      left:152px;
+      bottom:220px;
+      border-radius:5px;
+      z-index:5;
+    }
+
+    .flame{
+      position:absolute;
+      width:25px;
+      height:35px;
+      background:gold;
+      border-radius:50%;
+      top:-30px;
+      left:-5px;
+      box-shadow:
+      0 0 15px orange,
+      0 0 25px gold;
+      animation:flicker .15s infinite;
+    }
+
+    @keyframes flicker{
+      0%{
+        transform:scale(1) rotate(-2deg);
+      }
+      50%{
+        transform:scale(1.08) rotate(2deg);
+      }
+      100%{
+        transform:scale(1) rotate(-2deg);
+      }
+    }
+
+    /* DECORATIONS */
+
+    .decor{
+      position:absolute;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:white;
+      box-shadow:0 0 10px white;
+    }
+
+    /* CONTROLS */
+
+    .controls{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:15px;
+      margin-top:10px;
+    }
+
+    .instruction{
+      color:white;
+      font-size:18px;
+      text-align:center;
+      text-shadow:0 0 10px #ff4fa3;
+      max-width:320px;
+    }
+
+    button{
+      padding:16px 30px;
+      border:none;
+      border-radius:50px;
+      background:white;
+      color:#ff4fa3;
+      font-size:18px;
+      cursor:pointer;
+      font-weight:bold;
+      box-shadow:0 5px 15px rgba(0,0,0,.2);
+      transition:.3s;
+    }
+
+    button:hover{
+      transform:scale(1.05);
+    }
+
+    /* MESSAGE */
+
+    .message{
+      margin-top:40px;
+      font-size:40px;
+      color:white;
+      font-weight:bold;
+      opacity:0;
+      transform:translateY(20px);
+      transition:1s;
+      text-shadow:0 0 20px #ff4fa3;
+    }
+
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* ENVELOPE */
+
+    .envelope-container{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-top:10px;
+    }
+
+    .envelope{
+      width:110px;
+      height:110px;
+      background:white;
+      border-radius:25px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:55px;
+      cursor:pointer;
+      box-shadow:
+      0 0 20px rgba(255,255,255,.8),
+      0 0 35px rgba(255,105,180,.6);
+      transition:.3s;
+      animation:floatEnvelope 2s ease-in-out infinite;
+    }
+
+    .envelope:hover{
+      transform:scale(1.08);
+    }
+
+    @keyframes floatEnvelope{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-8px);
+      }
+    }
+
+    /* VOICE CARD */
+
+    .voice-card{
+      margin-top:20px;
+      background:rgba(255,255,255,.25);
+      backdrop-filter:blur(10px);
+      padding:20px;
+      border-radius:25px;
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      gap:15px;
+      box-shadow:
+      0 0 25px rgba(255,255,255,.4);
+      animation:fadeIn .5s ease;
+    }
+
+    .voice-card h3{
+      color:white;
+      text-shadow:0 0 10px #ff4fa3;
+      font-size:24px;
+    }
+
+    .voice-card audio{
+      width:260px;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(15px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND MUSIC -->
+
+  <audio id="bgMusic" loop>
+    <source src="birthday.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- FLOATING HEARTS -->
+
+  <script>
+
+    for(let i=0;i<30;i++){
+
+      const heart=document.createElement("div");
+
+      heart.classList.add("heart");
+
+      heart.innerHTML="💖";
+
+      heart.style.left=Math.random()*100+"vw";
+
+      heart.style.fontSize=(15+Math.random()*30)+"px";
+
+      heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+      document.body.appendChild(heart);
+
+    }
+
+  </script>
+
+  <!-- MAIN CONTENT -->
+
+  <div class="container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left-side">
+
+      <img src="image/Dannie.jpg" class="birthday-image">
+
+      <!-- CONTROLS -->
+
+      <div class="controls">
+
+        <div class="instruction">
+          Blow into your microphone to extinguish the candle 💨
+        </div>
+
+        <button id="startBtn">
+          Enable Microphone 🎤
+        </button>
+
+      </div>
+
+      <!-- ENVELOPE -->
+
+      <div class="envelope-container">
+
+        <div class="envelope" id="envelope">
+          💌
+        </div>
+
+        <div class="voice-card" id="voiceCard">
+
+          <h3>Birthday Greeting 🎙️</h3>
+
+          <audio controls>
+            <source src="greeting.mp3" type="audio/mp3">
+          </audio>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-side">
+
+      <h1>
+        🎉 HAPPY BIRTHDAY, DANNIE!!! 🎉
+      </h1>
+
+      <!-- CAKE -->
+
+      <div class="cake-container">
+
+        <div class="cake">
+
+          <div class="plate"></div>
+
+          <div class="layer bottom"></div>
+          <div class="icing icing1"></div>
+
+          <div class="layer middle"></div>
+          <div class="icing icing2"></div>
+
+          <div class="layer top"></div>
+          <div class="icing icing3"></div>
+
+          <!-- DECORATIONS -->
+
+          <div class="decor" style="bottom:25px; left:40px;"></div>
+          <div class="decor" style="bottom:25px; right:40px;"></div>
+          <div class="decor" style="bottom:110px; left:60px;"></div>
+          <div class="decor" style="bottom:110px; right:60px;"></div>
+          <div class="decor" style="bottom:185px; left:110px;"></div>
+
+          <!-- CANDLE -->
+
+          <div class="candle">
+            <div class="flame" id="flame"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- MESSAGE -->
+
+      <div class="message" id="message">
+        🎂 Make a wish, Dannie! 🎂
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const startBtn =
+    document.getElementById("startBtn");
+
+    const flame =
+    document.getElementById("flame");
+
+    const message =
+    document.getElementById("message");
+
+    const music =
+    document.getElementById("bgMusic");
+
+    const envelope =
+    document.getElementById("envelope");
+
+    const voiceCard =
+    document.getElementById("voiceCard");
+
+    let analyser;
+
+    let dataArray;
+
+    /* ENVELOPE CLICK */
+
+    envelope.addEventListener("click", ()=>{
+
+      if(
+        voiceCard.style.display === "flex"
+      ){
+
+        voiceCard.style.display = "none";
+
+      }else{
+
+        voiceCard.style.display = "flex";
+
+      }
+
+    });
+
+    /* MICROPHONE */
+
+    startBtn.addEventListener("click", async()=>{
+
+      music.play();
+
+      try{
+
+        const stream =
+        await navigator.mediaDevices.getUserMedia({
+          audio:true
+        });
+
+        const audioContext =
+        new(window.AudioContext ||
+        window.webkitAudioContext)();
+
+        analyser = audioContext.createAnalyser();
+
+        const microphone =
+        audioContext.createMediaStreamSource(stream);
+
+        microphone.connect(analyser);
+
+        analyser.fftSize = 256;
+
+        const bufferLength =
+        analyser.frequencyBinCount;
+
+        dataArray =
+        new Uint8Array(bufferLength);
+
+        detectBlow();
+
+        startBtn.innerHTML =
+        "Microphone Enabled ✅";
+
+        startBtn.disabled = true;
+
+      }catch(err){
+
+        alert("Microphone access denied!");
+
+        console.log(err);
+
+      }
+
+    });
+
+    /* DETECT BLOW */
+
+    function detectBlow(){
+
+      requestAnimationFrame(detectBlow);
+
+      analyser.getByteFrequencyData(dataArray);
+
+      let volume =
+      dataArray.reduce((a,b)=>a+b)
+      / dataArray.length;
+
+      if(volume > 45){
+
+        flame.style.display = "none";
+
+        message.classList.add("show");
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
